@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,7 +43,6 @@ public class RoomEntity {
     @Column(nullable = false)
     private RoomType roomType;
 
-    @Positive
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 

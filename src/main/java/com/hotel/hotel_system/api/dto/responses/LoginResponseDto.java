@@ -1,5 +1,4 @@
-package com.hotel.hotel_system.api.dto.requests;
-
+package com.hotel.hotel_system.api.dto.responses;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,14 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RegistrationDto {
+public class LoginResponseDto {
 
+    //token
     String username;
-    String password;
-    String email;
+    
 
 }
