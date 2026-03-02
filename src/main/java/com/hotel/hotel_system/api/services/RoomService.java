@@ -16,6 +16,8 @@ import com.hotel.hotel_system.store.entities.RoomEntity;
 import com.hotel.hotel_system.store.enums.RoomType;
 import com.hotel.hotel_system.store.repositories.RoomRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 public class RoomService {
@@ -54,12 +56,11 @@ public class RoomService {
     }
 
    
-    public void updateRoom(RoomUpdateDto dto, Long id){
+    public RoomResponseDto updateRoom(RoomUpdateDto dto, Long id){
         RoomEntity entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Room not found"));
         RoomEntity updatedEntity = mapper.updateRoomEntity(dto, entity);
         repository.save(updatedEntity);
-        
-
+        return mapper.toResponseDto(updatedEntity);
     }
 
 
@@ -73,6 +74,22 @@ public class RoomService {
     public List<RoomResponseDto> getAllRoomByType(RoomType type){
 
         List<RoomEntity> entities = repository.findAllByRoomType(type);
+        List<RoomResponseDto> responses = entities.stream().map(mapper::toResponseDto).collect(Collectors.toList());
+        return responses;
+
+    }
+
+    public RoomResponseDto getRoomById(Long id){
+
+        RoomResponseDto dto = repository.findById(id)
+                                    .map(mapper::toResponseDto)
+                                    .orElseThrow(() -> new EntityNotFoundException(""));
+        return dto;
+    }
+
+    public List<RoomResponseDto> getAllRoom(){
+
+         List<RoomEntity> entities = repository.findAll();
         List<RoomResponseDto> responses = entities.stream().map(mapper::toResponseDto).collect(Collectors.toList());
         return responses;
 

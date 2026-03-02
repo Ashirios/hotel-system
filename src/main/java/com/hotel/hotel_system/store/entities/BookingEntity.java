@@ -39,6 +39,7 @@ public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_seq")
     @SequenceGenerator(name = "booking_seq", sequenceName = "booking_sequence", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne(optional = false)
@@ -50,21 +51,20 @@ public class BookingEntity {
     private RoomEntity room;
 
     @FutureOrPresent
-    @Column(nullable = false)
+    @Column(name = "start_date" ,nullable = false)
     private LocalDate startDate;
 
     @Future
-    @Column(nullable = false)
+    @Column(name = "end_date",nullable = false)
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status",nullable = false)
     private Status status;
 
-    @Column(nullable = false)
+    @Column(name = "total_price",nullable = false)
     private BigDecimal totalPrice;
 
-    @Column(nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "created_at",nullable = false)
     private LocalDateTime createdAt;
 }

@@ -36,21 +36,22 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_sequence", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
     
-    @Column(nullable = false, length = 50)
+    @Column(name = "username",nullable = false, length = 50)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Email
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(name = "email",nullable = false, unique = true, length = 100)
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "role",nullable = false)
     private Role role;
 
 

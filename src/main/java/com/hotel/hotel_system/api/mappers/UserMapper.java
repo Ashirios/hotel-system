@@ -4,6 +4,7 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.springframework.stereotype.Component;
 
 import com.hotel.hotel_system.api.dto.requests.LoginRequestDto;
 import com.hotel.hotel_system.api.dto.requests.RegistrationDto;
@@ -11,13 +12,15 @@ import com.hotel.hotel_system.api.dto.requests.UserUpdateDto;
 import com.hotel.hotel_system.api.dto.responses.UserProfileDto;
 import com.hotel.hotel_system.store.entities.UserEntity;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Builder;
+
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
     @Mapping(target = "password", source = "password")
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "role", expression = "java(com.hotel.hotel_system.store.enums.Role.USER)")
+    @Mapping(target = "role", constant = "USER")
     @Mapping(target = "bookings", ignore = true)
     UserEntity toEntity(RegistrationDto dto);
 

@@ -36,6 +36,7 @@ public class UserService {
 
         //encode password 
 
+        
 
         UserEntity savedEntity = repository.save(entity);
         UserProfileDto profile = mapper.toProfileDto(savedEntity);
@@ -74,6 +75,14 @@ public class UserService {
             return dto2;
         }
         throw new RuntimeException("User doesnt exist");
+
+    }
+
+
+    public UserProfileDto getById(Long id){
+        UserEntity entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("User doesn't exist"));
+
+        return mapper.toProfileDto(entity);
 
     }
 

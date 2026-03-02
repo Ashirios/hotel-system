@@ -34,16 +34,17 @@ public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
     @SequenceGenerator(name = "room_seq", sequenceName = "room_sequence", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "room_number",unique = true, nullable = false)
     private int roomNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "room_type", nullable = false)
     private RoomType roomType;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(name = "price",nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
 }

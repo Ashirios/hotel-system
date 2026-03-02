@@ -2,6 +2,7 @@ package com.hotel.hotel_system.api.dto.requests;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginRequestDto {
-
     Long id;
     String username;
     String password;
