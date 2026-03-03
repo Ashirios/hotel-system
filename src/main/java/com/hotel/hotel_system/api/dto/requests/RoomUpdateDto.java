@@ -1,7 +1,6 @@
 package com.hotel.hotel_system.api.dto.requests;
 
 import java.math.BigDecimal;
-import jakarta.persistence.Column;
 import com.hotel.hotel_system.store.enums.RoomType;
 
 import lombok.AccessLevel;

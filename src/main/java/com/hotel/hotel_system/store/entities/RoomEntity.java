@@ -1,5 +1,7 @@
 package com.hotel.hotel_system.store.entities;
 
+
+
 import com.hotel.hotel_system.store.enums.RoomType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
