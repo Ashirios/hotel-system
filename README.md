@@ -1,4 +1,4 @@
-```markdown
+
 # Hotel Management System
 
 Система управления отелем на Spring Boot с REST API, JPA и Docker.
